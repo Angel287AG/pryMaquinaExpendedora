@@ -11,7 +11,7 @@ namespace pryMaquinaExpendedora
     internal class Class1
     {
         static void Main(string[] args)
-        {
+        { 
 
             Producto p1 = new Producto("agua", 20.0f, 10);
             Producto p2 = new Producto("gancito", 18.5f, 10);
