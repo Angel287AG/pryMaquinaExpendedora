@@ -6,7 +6,7 @@ public class Producto
     //int para inventario (piezas enteras) un mejor entendimiento 
     //strin oara el nombre por que es una cadena de letras
     //en el encapsulamiento el Main no puede cambiar el inventario directamente
-    //debe pasar por este método que valida si hay existencias
+    //debe pasar por este método que valida si hay existencias 
     public string nombre;
     public float precio;
     public int inventario;
