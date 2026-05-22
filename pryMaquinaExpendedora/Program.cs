@@ -2,7 +2,7 @@
 namespace pryMaquinaExpendedora;
 public class Producto
 {
-       // float: para precios con decimales para no confundirse
+       // float: para precios con decimales para no confundirse y entenderlo con mas claridad
        //int: para inventario (piezas enteras) un mejor entendimiento
        //Encapsulamiento: El Main no puede cambiar el stock directamente
        //debe pasar por este método que valida si hay existencias
