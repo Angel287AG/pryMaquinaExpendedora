@@ -1,55 +1,35 @@
-﻿namespace pryMaquinaExpendedora
+﻿using System;
+namespace pryMaquinaExpendedora;
+public class Producto
 {
-    internal class Expendedora
+       // float: para precios con decimales para no confundirse
+       //int: para inventario (piezas enteras) un mejor entendimiento
+       //Encapsulamiento: El Main no puede cambiar el stock directamente
+       //debe pasar por este método que valida si hay existencias
+
+    public static void ProcesarCompra(string[,] datos, int indice, int cantidad)
     {
-        //atributos
-        public string nombre;
-        private int inventario;
-        private double precio;
+        float precio = float.Parse(datos[indice, 1]);
+        int stockActual = int.Parse(datos[indice, 2]);
 
-       
-        //constructor
-        public Expendedora(string nombre, double precio, int inventario)
+        if (cantidad <= stockActual)
         {
-            this.nombre = nombre;
-            this.precio = precio;
-            this.inventario = inventario;
-        }
-        public string nombredelproducto ()
-        {
-            return nombre;
-        }
-        public int Elinventario()
-        {
-            return inventario;
-        }
-        public double Elprecio()
-        {
-            return precio;
-        }
-        public void compras(int cantidad)
-        {
-            if (cantidad<= inventario)
-            {
-                double totaldelacompra = cantidad * precio;
-                inventario = inventario - cantidad;
+            float total = cantidad * precio;
+            datos[indice, 2] = (stockActual - cantidad).ToString();
 
-                Console.WriteLine("su compra fue realizada correctamente");
-
-                Console.WriteLine("el total a pagar de la compra es de $" + totaldelacompra);
-            }
-            else
-            {
-                Console.WriteLine("no hay suficinte del producto en el invenventario");
-            }
-
+            Console.WriteLine(" Venta exitosa. Cobro total: $" + total);
         }
-        public void actualizarinventario(int cantidad)
+        else
         {
-            int abastecimiento = 0;
-            abastecimiento = abastecimiento + cantidad;
-            Console.WriteLine("El inventario se acctualizo correctamente");
+            Console.WriteLine("\n No hay suficiente en el inventario");
         }
+    }
 
+    public static void Surtir(string[,] datos, int indice, int cantidad)
+    {
+        int stockActual = int.Parse(datos[indice, 2]);
+        datos[indice, 2] = (stockActual + cantidad).ToString();
+        Console.WriteLine("\nInventario actualizado por el proveedor.");
     }
 }
+
