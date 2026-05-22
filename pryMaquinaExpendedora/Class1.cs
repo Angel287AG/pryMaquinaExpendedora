@@ -5,7 +5,7 @@ using System.Text;
 
 namespace pryMaquinaExpendedora
 {
-    // string parael nombre por que es una cadena de letras 
+    // string para el nombre por que es una cadena de letras 
     //el float en el precio es por que no todos los productos cuestan lo mismo ya que diferentes productos pueden tener costos decimales
     //el int en el inventario ya que no podemos poner solo un pedazo del producto,es decir no podemos vender medio gancito por lotanto tiene que ser entero
     internal class Class1
