@@ -5,24 +5,21 @@ using System.Text;
 
 namespace pryMaquinaExpendedora
 {
-    // strin oara el nombre por que es una cadena de letras 
+    // string parael nombre por que es una cadena de letras 
     //el float en el precio es por que no todos los productos cuestan lo mismo ya que diferentes productos pueden tener costos decimales
     //el int en el inventario ya que no podemos poner solo un pedazo del producto,es decir no podemos vender medio gancito por lotanto tiene que ser entero
     internal class Class1
     {
         static void Main(string[] args)
         {
-            
-            string[,] productos = {
-                // nombre del producto   precio    cantidad
-                { "agua",               "20",        "10" },
-                { "gancito",            "18.5",      "10" },
-                { "chocolate",          "35",        "10" },
-                { "coca cola",          "29",         "10" }
-            };
 
+            Producto p1 = new Producto("agua", 20.0f, 10);
+            Producto p2 = new Producto("gancito", 18.5f, 10);
+            Producto p3 = new Producto("chocolate", 35.0f, 10);
+            Producto p4 = new Producto("coca cola", 29.0f, 10);
             int opcion = 0;
 
+            Producto[] productos = { p1, p2, p3, p4 };
             while (opcion != 4)
             {
                 Console.WriteLine("\nselecione uno opcion");
@@ -34,47 +31,43 @@ namespace pryMaquinaExpendedora
                 opcion = int.Parse(Console.ReadLine());
 
                 //vtrina
-                if (opcion == 1)
+                if (opcion == 1) 
                 {
-                    int[] ancho = { 15, 20, 10 };
-                    Console.WriteLine("{0,-10}{1,-20}{2,-10}", "producto", "prcio","inventario");
-                    for (int f = 0; f < productos.GetLength(0); f++)
+                    Console.WriteLine("\n" + "producto".PadRight(15) + "precio".PadRight(10) + "inventario");
+                    for (int i = 0; i < productos.Length; i++)
                     {
-                        for (int c = 0; c < productos.GetLength(1); c++)
-                        {
-                            Console.Write(productos[f, c].PadRight(ancho[c]));
-                        }
-                        Console.WriteLine();
+                        Console.WriteLine(productos);
                     }
                 }
-                //compra
-                else if (opcion == 2)
+                // Comprar
+                else if (opcion == 2) 
                 {
-                    Console.Write("Seleccione producto (1-4): ");
-                    int opciones= int.Parse(Console.ReadLine()) - 1;
+                    Console.Write("Seleccione producto (1,2,3,4): ");
+                    int selecion = int.Parse(Console.ReadLine()) - 1;
                     Console.Write("Cantidad a comprar: ");
                     int cant = int.Parse(Console.ReadLine());
 
-                    if (opciones >= 0 && opciones < 4)
+                    if (selecion >= 0 && selecion < 4)
                     {
-
-                        Producto.ProcesarCompra(productos, opciones, cant);
+                        productos[selecion].ProcesarCompra(cant);
                     }
                 }
-                //actualizar inventario
+                // Abastecer
                 else if (opcion == 3)
                 {
-                    Console.Write("Seleccione producto (1-4): ");
-                    int opciones = int.Parse(Console.ReadLine()) - 1;
+                    Console.Write("Seleccione producto (1,2,3,4): ");
+                    int selecion = int.Parse(Console.ReadLine()) - 1;
                     Console.Write("Cantidad a surtir: ");
                     int cant = int.Parse(Console.ReadLine());
 
-                    if (opciones >= 0 && opciones < 4)
+                    if (selecion >= 0 && selecion < 4)
                     {
-                        Producto.Surtir(productos, opciones, cant);
+                       
+                        productos[selecion].Surtirproducto(cant);
                     }
                 }
             }
+        
         }
     }
 }
