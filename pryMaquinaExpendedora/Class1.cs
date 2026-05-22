@@ -5,7 +5,7 @@ using System.Text;
 
 namespace pryMaquinaExpendedora
 {
-    // string para el nombre por que es una cadena de letras 
+    // string paracel nombre por que es una cadena de letras 
     //el float en el precio es por que no todos los productos cuestan lo mismo ya que diferentes productos pueden tener costos decimales
     //el int en el inventario ya que no podemos poner solo un pedazo del producto,es decir no podemos vender medio gancito por lotanto tiene que ser entero
     internal class Class1
@@ -36,7 +36,7 @@ namespace pryMaquinaExpendedora
                     Console.WriteLine("\n" + "producto".PadRight(15) + "precio".PadRight(10) + "inventario");
                     for (int i = 0; i < productos.Length; i++)
                     {
-                        Console.WriteLine(productos);
+                        Console.WriteLine(productos[i].nombre.PadRight(15) + "$" + productos[i].precio.ToString().PadRight(10) + productos[i].inventario);
                     }
                 }
                 // Comprar
